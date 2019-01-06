@@ -49,9 +49,8 @@ const getDataFromDataSource = (input) => {
       command = `kafka-console-consumer --bootstrap-server ${ host }:${ port } --topic ${ topic } --offset ${ o } --partition 0 --timeout-ms 100 | grep -v ERROR | grep -v kafka.consumer.ConsumerTimeoutException`;
       return exec(command).then((result) => {
         return result.stdout.split('\n').filter((d) => { return !!d; }).map((d) => {
-          const dataSet = JSON.parse(d);
-          const observation = dataSet.observation[0];
-          return { timestamp: moment(observation.timestamp).format('D-MMM-YY HH:mm:ss'), value: observation.value };
+          const observation = JSON.parse(d);
+          return { timestamp: moment(observation.collectionTimestamp).format('D-MMM-YY HH:mm:ss'), value: observation.value };
         });
       });
     });
