@@ -41,16 +41,16 @@ const getDataFromDataSource = (input) => {
     const host = first(parameters.filter((p) => { return p.key === 'host'; })).value;
     const topic = first(parameters.filter((p) => { return p.key === 'topic'; })).value;
     const port = first(parameters.filter((p) => { return p.key === 'port'; })).value;
-    let command = `kafka-run-class kafka.tools.GetOffsetShell --broker-list ${ host }:${ port } --topic ${ topic }`;
+    let command = `kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list ${ host }:${ port } --topic ${ topic }`;
     return exec(command).then((result) => {
       return result.stdout.split(':')[2];
     }).then((offset) => {
-      const o = isNaN(offset - N) ? 0 : offset - N;
-      command = `kafka-console-consumer --bootstrap-server ${ host }:${ port } --topic ${ topic } --offset ${ o } --partition 0 --timeout-ms 100 | grep -v ERROR | grep -v kafka.consumer.ConsumerTimeoutException`;
+      const o = isNaN(offset - N) || offset -N < 0 ? 0 : offset - N;
+      command = `kafka-console-consumer.sh --bootstrap-server ${ host }:${ port } --topic ${ topic } --offset ${ o } --partition 0 --timeout-ms 100 | grep -v ERROR | grep -v kafka.consumer.ConsumerTimeoutException`;
       return exec(command).then((result) => {
         return result.stdout.split('\n').filter((d) => { return !!d; }).map((d) => {
           const observation = JSON.parse(d);
-          return { timestamp: moment(observation.collectionTimestamp).format('D-MMM-YY HH:mm:ss'), value: observation.value };
+          return { timestamp: moment(observation.collectionTimestamp).format('YYYY-MM-DD HH:mm:ss'), value: observation.value };
         });
       });
     });
