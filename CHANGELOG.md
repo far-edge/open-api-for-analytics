@@ -8,6 +8,10 @@
 
 * Align code with latest digital models.
 
+**SECURITY**
+
+* Fix security vulnerabilities reported by GitHub.
+
 
 ##### [1.0.0] - 2019-01-06
 
