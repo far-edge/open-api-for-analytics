@@ -46,7 +46,7 @@ const getDataFromDataSource = (input) => {
       return result.stdout.split(':')[2];
     }).then((offset) => {
       const o = isNaN(offset - N) || offset -N < 0 ? 0 : offset - N;
-      command = `kafka-console-consumer.sh --bootstrap-server ${ host }:${ port } --topic ${ topic } --offset ${ o } --partition 0 --timeout-ms 100 | grep -v ERROR | grep -v kafka.consumer.ConsumerTimeoutException`;
+      command = `kafka-console-consumer.sh --bootstrap-server ${ host }:${ port } --topic ${ topic } --offset ${ o } --partition 0 --timeout-ms 1000 | grep -v ERROR | grep -v kafka.consumer.ConsumerTimeoutException`;
       return exec(command).then((result) => {
         return result.stdout.split('\n').filter((d) => { return !!d; }).map((d) => {
           const observation = JSON.parse(d);
