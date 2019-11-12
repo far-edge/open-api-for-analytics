@@ -12,7 +12,7 @@ const validations = require('./core/common/validations');
 const { error, value: _env } = validations.validate(process.env, blueprint);
 if (error) {
   logger.error(`The environment is invalid (cause: ${ error.details[0].message }).`);
-  process.exit(1);
+  process.exit(23);
 }
 
 // Load all models.
@@ -45,6 +45,7 @@ mongoose.connect(uri, {
   return AIM.init();
 }).catch((error) => {
   logger.error(`System failed to connect to the database @ ${ uriwa }.`, error);
+  process.exit(42);
 });
 
 // Log more details when the log level is debug.
