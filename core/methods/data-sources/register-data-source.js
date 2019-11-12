@@ -37,7 +37,7 @@ const _registerLocalDataSource = (input) => {
   }).then((edgeGateway) => {
     // The edge gateway does not exist.
     if (!edgeGateway) {
-      logger.error(`Edge gateway ${ input.id } does not exist.`);
+      logger.error(`Edge gateway ${ input.edgeGatewayReferenceID } does not exist.`);
       throw new errors.BadRequestError('EDGE_GATEWAY_NOT_FOUND');
     }
     // Forward the request to the edge gateway.
