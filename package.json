@@ -2,7 +2,7 @@
   "name": "faredge-open-api-for-analytics",
   "description": "The FAR-EDGE open API for analytics.",
   "author": "Athens Information Technology <info@ait.gr>",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "Apache-2.0",
   "main": "server.js",
   "engines": {
