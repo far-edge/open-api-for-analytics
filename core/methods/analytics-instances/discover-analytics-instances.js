@@ -80,7 +80,7 @@ const _discoverLocalAnalyticsInstances = (input) => {
         logger.debug(`Discovered analytics instances in edge gateway ${ edgeGateway._id } local scope.`);
         return analyticsInstances;
       }).catch((error) => {
-        logger.error('Failed to discover analytics instances in edge gateway ${ edgeGateway._id } local scope.', error);
+        logger.error(`Failed to discover analytics instances in edge gateway ${ edgeGateway._id } local scope.`, error);
         return [];
       });
     });
