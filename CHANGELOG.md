@@ -2,6 +2,13 @@
 
 **NOTE:** The project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+##### [Unreleased]
+
+**FIXED**
+
+* Error occurs when a processor stops or fails.
+
+
 ##### [1.0.3] - 2019-11-12
 
 **CHANGED**
