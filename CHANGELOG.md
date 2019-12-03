@@ -7,6 +7,7 @@
 **FIXED**
 
 * There are mistakes in the logs.
+* Error occurs when a processor stops or fails.
 
 
 ##### [1.0.4] - 2019-12-02

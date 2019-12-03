@@ -115,7 +115,7 @@ const _startAnalyticsProcessor = (aiid, analyticsProcessorManifest) => {
       logger.debug(`Analytics processor ${ analyticsProcessorManifest._id } stopped.`);
       // The processor stopped.
       _ait[aiid].processors[analyticsProcessorManifest._id].state = State.STOPPED;
-      _ait[aiid].state = Object.values(_ait[aiid]).processors.some((p) => {
+      _ait[aiid].state = Object.values(_ait[aiid].processors).some((p) => {
         return p.state === State.FAILED;
       }) ? State.FAILED : State.STOPPED;
     }).catch((error) => {
