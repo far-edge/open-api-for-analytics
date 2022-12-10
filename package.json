@@ -30,7 +30,7 @@
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
-    "express": "^4.15.5",
+    "express": "^4.17.3",
     "express-winston": "^2.4.0",
     "helmet": "^3.8.2",
     "joi": "^13.2.0",
